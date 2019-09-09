@@ -13,6 +13,8 @@
 
 void menu(); // printa na tela as opções do usuário
 
+void waitMove(struct stack *P1, struct stack *P2, struct stack *P3);
+
 int main()
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -86,4 +88,89 @@ void menu()
 	printf("2 - Visualizar Pinos\n");
 	printf("3 - Limpar a tela\n");
 	printf("Opção: ");
+}
+
+void waitMove(struct stack *P1, struct stack *P2, struct stack *P3)
+{
+	while(1){
+		int src, dest;
+   		printf("\nMover de Pino: ");
+   		scanf("%d", &src);
+   		printf("\nPara Pino: ");
+   		scanf("%d", &dest);
+   		if(src == 1 && dest == 2){
+			if(moveStack(P2, P1)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+   		else if(src == 1 && dest == 3){
+			if(moveStack(P3, P1)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+   		else if(src == 2 && dest == 1){
+			if(moveStack(P1, P2)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+   		else if(src == 2 && dest == 3){
+			if(moveStack(P3, P2)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+   		else if(src == 3 && dest == 1){ 
+			if(moveStack(P1, P3)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+   		else if(src == 3 && dest == 2){ 
+			if(moveStack(P2, P3)){
+				printf("\nMovido Com Sucesso");
+				return;
+			}
+			else{
+				printf("\nMovimento Inválido\n");
+				printStack(P1, "Pino 1");
+    			printStack(P2, "Pino 2");
+    			printStack(P3, "Pino 3");
+    		}
+		}
+		else
+			printf("\nEscolha entre os Pinos 1 a 3\n");
+	}
 }

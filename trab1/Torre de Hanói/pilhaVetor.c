@@ -80,7 +80,7 @@ void printStack(struct stack *s, const char name[])
 	printf("\n\n");	
 }
 
-int moveDisc(struct stack *dest, struct stack *src)
+int moveStack(struct stack *dest, struct stack *src)
 {
 	if(pilhaVazia(src))
 		return 0;
@@ -89,91 +89,6 @@ int moveDisc(struct stack *dest, struct stack *src)
 		return 1;
 	}
 	else return 0;	
-}
-
-void waitMove(struct stack *P1, struct stack *P2, struct stack *P3)
-{
-	while(1){
-		int src, dest;
-   		printf("\nMover de Pino: ");
-   		scanf("%d", &src);
-   		printf("\nPara Pino: ");
-   		scanf("%d", &dest);
-   		if(src == 1 && dest == 2){
-			if(moveDisc(P2, P1)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-   		else if(src == 1 && dest == 3){
-			if(moveDisc(P3, P1)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-   		else if(src == 2 && dest == 1){
-			if(moveDisc(P1, P2)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-   		else if(src == 2 && dest == 3){
-			if(moveDisc(P3, P2)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-   		else if(src == 3 && dest == 1){ 
-			if(moveDisc(P1, P3)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-   		else if(src == 3 && dest == 2){ 
-			if(moveDisc(P2, P3)){
-				printf("\nMovido Com Sucesso");
-				return;
-			}
-			else{
-				printf("\nMovimento Inválido\n");
-				printStack(P1, "Pino 1");
-    			printStack(P2, "Pino 2");
-    			printStack(P3, "Pino 3");
-    		}
-		}
-		else
-			printf("\nEscolha entre os Pinos 1 a 3\n");
-	}
 }
 
 

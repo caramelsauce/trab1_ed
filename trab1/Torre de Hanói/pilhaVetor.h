@@ -25,8 +25,6 @@ int elemTopo(struct stack *s);
 
 void printStack(struct stack *s, const char name[]);
 
-int moveDisc(struct stack *dest, struct stack *src);
-
-void waitMove(struct stack *P1, struct stack *P2, struct stack *P3);
+int moveStack(struct stack *dest, struct stack *src);
 
 #endif
