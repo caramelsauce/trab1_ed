@@ -15,6 +15,8 @@ void menu(); // printa na tela as opções do usuário
 
 void waitMove(struct stack *P1, struct stack *P2, struct stack *P3);
 
+void setStart(struct stack *s);
+
 int main()
 {
 	setlocale(LC_ALL, "Portuguese");
@@ -23,22 +25,29 @@ int main()
 	
     struct stack P1, P2, P3; // as 3 Pilhas
     
-    int op, quit = 0, cont = 0; // variáveis de controle e um contador de movimentos
+    int op, t, quit = 0, cont = 0; 
+    
+    do{
+    	printf("Digite o número de discos com qual deseja jogar(mínimo = 3 discos): ");
+    	scanf("%d", &t);
+    	printf("\n");
+    }while(t < 3);
     
     // inicialização das Pilhas
     
-    inicPilha(&P1);
-    inicPilha(&P2);
-    inicPilha(&P3);
+    inicPilha(&P1, t);
+    inicPilha(&P2, t);
+    inicPilha(&P3, t);
     
+    setStart(&P1);
     
     // Empilhando os "discos" no primeiro "pino"
     
-    push(&P1, 5);
+/*    push(&P1, 5);
     push(&P1, 4);
     push(&P1, 3);
     push(&P1, 2);
-    push(&P1, 1);
+    push(&P1, 1);*/
     
     // loop principal do programa
     
@@ -88,6 +97,13 @@ void menu()
 	printf("2 - Visualizar Pinos\n");
 	printf("3 - Limpar a tela\n");
 	printf("Opção: ");
+}
+
+void setStart(struct stack *s)
+{
+	int i;
+	for(i=s->tam; i>0; i--)
+		push(s, i);
 }
 
 void waitMove(struct stack *P1, struct stack *P2, struct stack *P3)
